@@ -4,10 +4,10 @@
 import vim
 import os
 import os.path
+import sys
 from leaderf.utils import *
 from leaderf.explorer import *
 from leaderf.manager import *
-
 
 #*****************************************************
 # ProsessionsExplorer
@@ -26,10 +26,6 @@ class ProsessionsExplorer(Explorer):
 
     def getStlCurDir(self):
         return escQuote(lfEncode(os.getcwd()))
-
-    def isFilePath(self):
-        return False
-
 
 #*****************************************************
 # ProsessionsExplManager
@@ -94,3 +90,5 @@ class ProsessionsExplManager(Manager):
 prosessionsExplManager = ProsessionsExplManager()
 
 __all__ = ['prosessionsExplManager']
+
+sys.stderr = object

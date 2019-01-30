@@ -31,8 +31,20 @@ function! leaderf#Prosessions#Maps()
     nnoremap <buffer> <silent> q             :exec g:Lf_py "prosessionsExplManager.quit()"<CR>
     nnoremap <buffer> <silent> i             :exec g:Lf_py "prosessionsExplManager.input()"<CR>
     nnoremap <buffer> <silent> <F1>          :exec g:Lf_py "prosessionsExplManager.toggleHelp()"<CR>
+    if has_key(g:Lf_NormalMap, "Prosessions")
+        for i in g:Lf_NormalMap["Prosessions"]
+            exec 'nnoremap <buffer> <silent> '.i[0].' '.i[1]
+        endfor
+    endif
 endfunction
 
 function! leaderf#Prosessions#startExpl(win_pos, ...)
     call leaderf#LfPy("prosessionsExplManager.startExplorer('".a:win_pos."')")
+endfunction
+
+function! leaderf#Prosessions#register(name)
+exec g:Lf_py "<< EOF"
+from leaderf.anyExpl import anyHub
+anyHub.addPythonExtension(vim.eval("a:name"), prosessionsExplManager)
+EOF
 endfunction
