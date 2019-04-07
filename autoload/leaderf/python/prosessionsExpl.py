@@ -4,7 +4,6 @@
 import vim
 import os
 import os.path
-import sys
 from leaderf.utils import *
 from leaderf.explorer import *
 from leaderf.manager import *
@@ -90,5 +89,3 @@ class ProsessionsExplManager(Manager):
 prosessionsExplManager = ProsessionsExplManager()
 
 __all__ = ['prosessionsExplManager']
-
-sys.stderr = object

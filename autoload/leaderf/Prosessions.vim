@@ -39,7 +39,10 @@ function! leaderf#Prosessions#Maps()
 endfunction
 
 function! leaderf#Prosessions#startExpl(win_pos, ...)
-    call leaderf#LfPy("prosessionsExplManager.startExplorer('".a:win_pos."')")
+    try
+        call leaderf#LfPy("prosessionsExplManager.startExplorer('".a:win_pos."')")
+    catch
+    endtry
 endfunction
 
 function! leaderf#Prosessions#register(name)
